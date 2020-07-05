@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Media, Button} from "react-bootstrap"
+import { Media, Button, Card, Container, Row, Col} from "react-bootstrap"
 import { Link } from 'react-router-dom'
 
 class SingleMediaItem extends Component {
@@ -27,12 +27,32 @@ class SingleMediaItem extends Component {
               alt="Generic placeholder"
             />
             <Media.Body>
-              <h5>{title}</h5>
+              <Container>
+                <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-xl-6 mb-4 text-center">
+                  <Col >
+                <Card border="primary" style={{ width: '18rem' }}>
+                    <Card.Header>{title}</Card.Header>
+                    <Card.Body>
+                      <Card.Title>{type}</Card.Title>
+                      <Card.Text>
+                      {year}
+                      </Card.Text>
+                      <Button className="ml-5" variant="danger" onClick={() => this.deleteBook(imdbID) } >DeleteMovie</Button>
+                      <Button className="ml-5" variant="warning"><Link to={"/details/" + imdbID}>Edit Movie</Link></Button>
+                    </Card.Body>
+                  </Card>
+                  <br />
+                  </Col>
+                  </Row>
+                </Container>
+
+
+             {/*  <h5>{title}</h5>
               <p>
                 {type} - {year}
                 <Button className="ml-5" variant="danger" onClick={() => this.deleteBook(imdbID) } >DeleteMovie</Button>
                 <Button className="ml-5" variant="warning"><Link to={"/details/" + imdbID}>Edit Movie</Link></Button>
-              </p>
+              </p> */}
             </Media.Body>
           </Media>
         )
